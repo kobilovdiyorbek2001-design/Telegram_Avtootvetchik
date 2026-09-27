@@ -37,11 +37,9 @@ async def handle_message(message: types.Message):
             ),
         )
         bot_reply = response.text
-    except Exception as e:
-        bot_reply = "Kechirasiz, hozirgi paytda javob berishda kichik texnik nosozlik kuzatildi."
-
     await message.answer(bot_reply)
-
+except Exception as e:
+    bot_reply = f"Xatolik tafsiloti: {str(e)}"
 @app.post("/api/index")
 async def webhook(request: Request):
     data = await request.json()
